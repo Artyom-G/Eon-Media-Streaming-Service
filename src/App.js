@@ -8,9 +8,9 @@ import './App.scss';
 const App = () => {
   return (
     <Router>
-      <div style={appStyles}>
+      <div className="app">
         <Sidebar />
-        <div style={contentStyles}>
+        <div className='content'>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/upload" element={<UploadPage />} />

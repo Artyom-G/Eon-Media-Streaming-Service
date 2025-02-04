@@ -5,7 +5,6 @@ import './Sidebar.scss';
 const Sidebar = () => {
   return (
     <div className="sidebar">
-      <h2>Sidebar</h2>
       <ul>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/upload">Upload</Link></li>

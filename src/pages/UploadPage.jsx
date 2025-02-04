@@ -1,9 +1,10 @@
 import React from 'react';
+import './UploadPage.scss';
 
 const UploadPage = () => {
   return (
-    <div>
-      <h1>UploadPage</h1>
+    <div className='upload-page'>
+      <h1>Upload Page</h1>
     </div>
   );
 };
