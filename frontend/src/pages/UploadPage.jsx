@@ -1,10 +1,10 @@
-import React from 'react';
-import './UploadPage.scss';
+import UploadButton from "../components/UploadButton";
 
 const UploadPage = () => {
   return (
-    <div className='upload-page'>
+    <div className="upload-container">
       <h1>Upload Page</h1>
+      <UploadButton />
     </div>
   );
 };
