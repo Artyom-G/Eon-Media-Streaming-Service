@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
-import Home from './pages/Home';
+import HomePage from './pages/HomePage';
 import UploadPage from './pages/UploadPage';
 import './App.scss';
 
@@ -12,7 +12,7 @@ const App = () => {
         <Sidebar />
         <div className='content'>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/upload" element={<UploadPage />} />
           </Routes>
         </div>

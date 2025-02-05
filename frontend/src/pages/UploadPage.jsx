@@ -1,12 +1,46 @@
-import UploadButton from "../components/UploadButton";
+// UploadPage.jsx
+import React, { useState } from 'react';
+import UploadForm from '../components/UploadForm';
 
 const UploadPage = () => {
-  return (
-    <div className="upload-container">
-      <h1>Upload Page</h1>
-      <UploadButton />
-    </div>
-  );
+    const [uploading, setUploading] = useState(false);
+    const [message, setMessage] = useState('');
+
+    const handleFormSubmit = async (videoData) => {
+        setUploading(true);
+        setMessage('');
+
+        try {
+            const response = await fetch('http://localhost:5000/api/v1/videos', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(videoData),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                setMessage(`Video uploaded successfully: ${data.title}`);
+            } else {
+                const errorData = await response.json();
+                setMessage(`Error: ${errorData.message}`);
+            }
+        } catch (error) {
+            setMessage(`Error: ${error.message}`);
+        }
+
+        setUploading(false);
+    };
+
+    return (
+        <div>
+            <h1>Upload Video</h1>
+            {uploading && <p>Uploading...</p>}
+            {message && <p>{message}</p>}
+            <UploadForm onSubmit={handleFormSubmit} />
+        </div>
+    );
 };
 
 export default UploadPage;
