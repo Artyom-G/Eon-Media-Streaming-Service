@@ -1,4 +1,3 @@
-// UploadPage.jsx
 import React, { useState } from 'react';
 import UploadForm from '../components/UploadForm';
 
@@ -11,7 +10,7 @@ const UploadPage = () => {
         setMessage('');
 
         try {
-            const response = await fetch('http://localhost:5000/api/v1/videos', {
+            const response = await fetch('https://eon-media-streaming-service.onrender.com/api/v1/videos', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

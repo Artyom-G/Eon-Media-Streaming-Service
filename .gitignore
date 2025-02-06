@@ -25,6 +25,7 @@ yarn-error.log*
 # other
 .env
 /node_modules
+/frontend/build
 backend/.env
 backend/node_modules/
 frontend/node_modules/

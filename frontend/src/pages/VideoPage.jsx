@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import VideoPlayer from '../components/VideoPlayer'; // Assuming VideoPlayer is in the components folder
+import VideoPlayer from '../components/VideoPlayer';
 import './VideoPage.scss';
 
 const VideoPage = () => {
@@ -10,7 +10,7 @@ const VideoPage = () => {
   useEffect(() => {
     const fetchVideo = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/v1/videos/${videoId}`);
+        const response = await fetch(`https://eon-media-streaming-service.onrender.com/api/v1/videos/${videoId}`);
         const data = await response.json();
         setVideo(data);
       } catch (error) {

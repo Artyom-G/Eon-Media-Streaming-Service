@@ -13,7 +13,7 @@ const SearchBar = ({ onResults }) => {
         if (!query.trim()) return;
 
         try {
-            const response = await fetch(`http://localhost:5000/api/v1/search?query=${encodeURIComponent(query)}`);
+            const response = await fetch(`https://eon-media-streaming-service.onrender.com/api/v1/search?query=${encodeURIComponent(query)}`);
             const data = await response.json();
             onResults(data);
         } catch (error) {

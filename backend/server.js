@@ -13,7 +13,7 @@ const PORT = 5000;
 
 const uri = process.env.MONGODB_URI;
 
-app.use(cors({ origin: 'http://localhost:3000' }));
+app.use(cors({ origin: 'https://youflix.artyomg.com' }));
 app.use(express.json());
 
 // Connect to MongoDB

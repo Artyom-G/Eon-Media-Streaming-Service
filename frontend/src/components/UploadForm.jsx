@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './UploadForm.scss';  // Make sure to import the SCSS
+import './UploadForm.scss';
 
 const UploadForm = ({ onSubmit }) => {
     const [title, setTitle] = useState('');
