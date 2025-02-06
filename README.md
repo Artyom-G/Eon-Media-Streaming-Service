@@ -15,40 +15,40 @@ NOTE: I am using a free tier to host the backend, and that means the server shut
 
 ### Backend
 
-Node.js
+- Node.js
 
-Express.js
+- Express.js
 
-Postman
+- Postman
 
-Mongoose
+- Mongoose
 
-ElasticSearch (with AWS OpenSearch)
+- ElasticSearch (with AWS OpenSearch)
 
-Render (for deployment)
+- Render (for deployment)
 
 
 #### Endpoints
 
 The backend can be found at [https://eon-media-streaming-service.onrender.com](https://eon-media-streaming-service.onrender.com) with endpoints:
 
-/api/v1/videos [POST]
+- /api/v1/videos [POST]
 
-/api/v1/videos [GET]
+- /api/v1/videos [GET]
 
-/api/v1/search [GET] (?query=keyword)
+- /api/v1/search [GET] (?query=keyword)
 
-/api/v1/videos/id [GET]
+- /api/v1/videos/id [GET]
 
 ### Frontend
 
-React.js
-SASS
-Cybrancee (for deployment)
+- React.js
+- SASS
+- Cybrancee (for deployment)
 
 ### Database
 
-MongoDB
+- MongoDB
 
 
 # Clonning the repo
