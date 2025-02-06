@@ -3,6 +3,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
+const createAwsConnector = require('aws-opensearch-connector');
+const AWS = require('aws-sdk');
 
 const Video = require('./models/video');
 
@@ -22,6 +24,21 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     .catch(err => {
         console.log('MongoDB connection error:', err);
     });
+
+const { Client } = require('@opensearch-project/opensearch');
+AWS.config.update({
+    region: process.env.AWS_REGION,
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+});
+
+const awsConnector = createAwsConnector(AWS.config);
+
+const opensearchClient = new Client({
+    ...awsConnector,
+    node: process.env.OPENSEARCH_URL
+});
+
 
 app.get('/api/v1/videos', async (req, res) => {
     try {
@@ -43,6 +60,18 @@ app.post('/api/v1/videos', async (req, res) => {
         const newVideo = new Video({ title, description, url, thumbnail });
         await newVideo.save();
 
+        await opensearchClient.index({
+            index: 'videos',
+            id: newVideo._id.toString(),
+            body: {
+                title,
+                description,
+                url,
+                thumbnail,
+                createdAt: new Date()
+            }
+        });
+
         res.status(201).json(newVideo);
     } catch (err) {
         res.status(500).json({ message: 'Error creating video', error: err.message });
@@ -60,6 +89,65 @@ app.get('/api/v1/videos/:id', async (req, res) => {
         res.status(500).json({ message: 'Server error', error: err.message });
     }
 });
+
+app.post('/api/v1/add-video', async (req, res) => {
+    try {
+        const { id, title, description, url, thumbnail, duration, views, createdAt } = req.body;
+
+        const response = await opensearchClient.index({
+            index: 'videos',
+            id: id,
+            body: {
+                title,
+                description,
+                url,
+                thumbnail,
+                duration,
+                views,
+                createdAt
+            }
+        });
+
+        res.json({ message: 'Video added', response });
+    } catch (error) {
+        res.status(500).json({ message: 'Error adding video', error: error.message });
+    }
+});
+
+app.get('/api/v1/search', async (req, res) => {
+    try {
+        const { query } = req.query;
+        const result = await opensearchClient.search({
+            index: 'videos',
+            body: {
+                query: {
+                    multi_match: {
+                        query: query,
+                        fields: ['title', 'description']
+                    }
+                }
+            }
+        });
+
+        console.log("Full search response:", result);
+
+        if (!result.body || !result.body.hits) {
+            return res.status(500).json({ message: "Unexpected search response structure", result });
+        }
+
+        const hits = result.body.hits.hits;
+
+        // Ensure _id is included in the response
+        res.json(hits.map(hit => ({
+            id: hit._id,
+            ...hit._source
+        })));
+    } catch (err) {
+        res.status(500).json({ message: "Error fetching data", error: err.message });
+    }
+});
+
+
 
 // Start the server
 app.listen(PORT, () => {
