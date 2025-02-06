@@ -73,7 +73,7 @@ Running is done with:
 
 ```
 cd frontend
-npm run dev
+npm start
 cd ..
 ```
 
