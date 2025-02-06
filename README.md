@@ -1,5 +1,7 @@
 # YouFlix
 
+![alt text](https://github.com/Artyom-G/Eon-Media-Streaming-Service/blob/main/Screenshot1.jpg?raw=true)
+
 ## You can try out the demo here:
 
 [https://youflix.artyomg.com](https://youflix.artyomg.com)
