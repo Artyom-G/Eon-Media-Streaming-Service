@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import VideoCard from '../components/VideoCard';
 import SearchBar from '../components/SearchBar';
 import Carousel from '../components/Carousel';
+import VideoPlayer from '../components/VideoPlayer';
 import './HomePage.scss';
 
 const HomePage = () => {

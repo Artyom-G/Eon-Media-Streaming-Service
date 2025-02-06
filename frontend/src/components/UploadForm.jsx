@@ -11,7 +11,7 @@ const UploadForm = ({ onSubmit }) => {
         
         const thumbnailSample = "https://letsenhance.io/static/73136da51c245e80edc6ccfe44888a99/1015f/MainBefore.jpg";
         const thumbnailUsed = thumbnail || thumbnailSample;
-        const url = "https://www.youtube.com/watch?v=r_jh0o0vfp8";
+        const url = "http://www.w3schools.com/Html/movie.mp4";
 
         const videoData = {
             title: title,

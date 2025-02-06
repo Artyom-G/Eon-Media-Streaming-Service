@@ -39,7 +39,7 @@ const opensearchClient = new Client({
     node: process.env.OPENSEARCH_URL
 });
 
-
+// Get all videos
 app.get('/api/v1/videos', async (req, res) => {
     try {
         const videos = await Video.find();
@@ -49,6 +49,7 @@ app.get('/api/v1/videos', async (req, res) => {
     }
 });
 
+// Post a video
 app.post('/api/v1/videos', async (req, res) => {
     try {
         const { title, description, url, thumbnail } = req.body;
@@ -78,6 +79,7 @@ app.post('/api/v1/videos', async (req, res) => {
     }
 });
 
+// Get Video by Id (for testing)
 app.get('/api/v1/videos/:id', async (req, res) => {
     try {
         const video = await Video.findById(req.params.id);
@@ -90,6 +92,7 @@ app.get('/api/v1/videos/:id', async (req, res) => {
     }
 });
 
+// Add Video Endpoint To ElasticSearch (for Testing)
 app.post('/api/v1/add-video', async (req, res) => {
     try {
         const { id, title, description, url, thumbnail, duration, views, createdAt } = req.body;
@@ -114,6 +117,7 @@ app.post('/api/v1/add-video', async (req, res) => {
     }
 });
 
+// Search Endpoint (to ElasticSearch)
 app.get('/api/v1/search', async (req, res) => {
     try {
         const { query } = req.query;
@@ -137,7 +141,6 @@ app.get('/api/v1/search', async (req, res) => {
 
         const hits = result.body.hits.hits;
 
-        // Ensure _id is included in the response
         res.json(hits.map(hit => ({
             id: hit._id,
             ...hit._source
