@@ -38,3 +38,44 @@ Cybrancee (for deployment)
 MongoDB
 
 
+# Clonning the repo
+
+```
+git clone
+```
+
+# Running the Servers
+
+## Frontend
+
+Setting up the frontend can be done with
+
+```
+cd frontend
+npm install
+cd ..
+```
+
+Running is done with:
+
+```
+cd frontend
+npm run dev
+cd ..
+```
+
+## Backend
+
+Setting up the backend can be done with
+
+```
+cd backend
+pip install -r requirements.txt
+cd ..
+```
+
+Running is done with
+
+```
+./backend/main.py/
+```
