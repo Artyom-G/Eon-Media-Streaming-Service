@@ -83,7 +83,7 @@ Setting up the backend can be done with
 
 ```
 cd backend
-pip install -r requirements.txt
+npm install
 cd ..
 ```
 
