@@ -54,7 +54,7 @@ MongoDB
 # Clonning the repo
 
 ```
-git clone
+git clone https://github.com/Artyom-G/Eon-Media-Streaming-Service.git
 ```
 
 # Running the Servers
