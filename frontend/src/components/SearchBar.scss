@@ -2,34 +2,36 @@
     display: flex;
     align-items: center;
     gap: 8px;
-
-    .search-input {
-        flex-grow: 1;
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-size: 16px;
-        transition: border-color 0.3s ease-in-out;
-
-        &:focus {
-            border-color: #007bff;
-            outline: none;
-        }
-    }
-
-    .search-button {
-        background-color: #007bff;
-        color: white;
-        padding: 8px 16px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 16px;
-        transition: background-color 0.3s ease-in-out;
-
-        &:hover {
-            background-color: #0056b3;
-        }
-    }
+    background-color: #212121;
+    border-radius: 4px;
+    padding: 5px 5px;
+    width: 100%;
+    max-width: 800px;
+    margin: 10px auto; 
 }
 
+.search-input {
+    flex-grow: 1;
+    padding: 10px 12px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #333;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.search-button {
+    background-color: #2e2e2e;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+        background-color: #181818;
+    }
+}

@@ -1,5 +1,5 @@
-// UploadForm.jsx
 import React, { useState } from 'react';
+import './UploadForm.scss';  // Make sure to import the SCSS
 
 const UploadForm = ({ onSubmit }) => {
     const [title, setTitle] = useState('');
@@ -28,38 +28,45 @@ const UploadForm = ({ onSubmit }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="title">Title</label>
-                <input 
-                    type="text" 
-                    id="title" 
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    required
-                />
-            </div>
+        <form className="upload-form" onSubmit={handleSubmit}>
+            <h2>Upload Video</h2>
+            
+            <div className="form-group">
+                <div>
+                    <label htmlFor="title">Title</label>
+                    <input 
+                        type="text" 
+                        id="title" 
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        required
+                        placeholder="Enter video title"
+                    />
+                </div>
 
-            <div>
-                <label htmlFor="description">Description</label>
-                <input 
-                    type="text" 
-                    id="description" 
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    required
-                />
-            </div>
+                <div>
+                    <label htmlFor="description">Description</label>
+                    <input 
+                        type="text" 
+                        id="description" 
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        required
+                        placeholder="Enter video description"
+                    />
+                </div>
 
-            <div>
-                <label htmlFor="thumbnail">Thumbnail URL</label>
-                <input 
-                    type="text" 
-                    id="thumbnail" 
-                    value={thumbnail}
-                    onChange={(e) => setThumbnail(e.target.value)}
-                    required
-                />
+                <div>
+                    <label htmlFor="thumbnail">Thumbnail URL</label>
+                    <input 
+                        type="text" 
+                        id="thumbnail" 
+                        value={thumbnail}
+                        onChange={(e) => setThumbnail(e.target.value)}
+                        required
+                        placeholder="Enter thumbnail URL"
+                    />
+                </div>
             </div>
 
             <button type="submit">Submit</button>

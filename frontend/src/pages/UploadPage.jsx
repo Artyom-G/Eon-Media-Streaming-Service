@@ -35,7 +35,6 @@ const UploadPage = () => {
 
     return (
         <div>
-            <h1>Upload Video</h1>
             {uploading && <p>Uploading...</p>}
             {message && <p>{message}</p>}
             <UploadForm onSubmit={handleFormSubmit} />

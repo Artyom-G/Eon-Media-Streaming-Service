@@ -1,27 +1,43 @@
 .video-card {
-    width: 200px;
-    border: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+
+.video-thumbnail-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
     border-radius: 10px;
-    margin: 10px;
-    padding: 10px;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .video-thumbnail {
     width: 100%;
-    height: auto;
-    border-radius: 5px;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.video-info {
+    margin-top: 8px;
 }
 
 .video-title {
-    margin-top: 10px;
-    font-size: 1.1rem;
-    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    margin: 4px 0;
 }
 
-.video-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.video-desc {
+    font-size: 14px;
+    color: #aaa;
+    margin: 0;
+    line-height: 1.4;
 }

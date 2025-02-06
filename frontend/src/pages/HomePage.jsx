@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import VideoCard from '../components/VideoCard';
 import SearchBar from '../components/SearchBar';
+import Carousel from '../components/Carousel';
 import './HomePage.scss';
 
 const HomePage = () => {
@@ -21,20 +22,19 @@ const HomePage = () => {
     }, []);
 
     const handleSearchResults = (results) => {
-        console.log(results);
         setVideos(results);
     };
 
     return (
-        <div>
-            <h1>Home Page</h1>
+        <div className='home-page'>
+            <h1>YouFlix</h1>
             <SearchBar onResults={handleSearchResults} />
             <h2>Videos:</h2>
-            <div className="video-list">
+            <Carousel>
                 {videos.map((video) => (
-                    <VideoCard key={video._id} video={video} />
+                    <VideoCard key={video.id || video._id} video={video} />
                 ))}
-            </div>
+            </Carousel>
         </div>
     );
 };
